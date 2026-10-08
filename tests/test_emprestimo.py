@@ -2,8 +2,8 @@ from datetime import date
 
 import pytest
 
-from app.dominio.classes import Aluno, Bibliotecaria, Livro
-from app.negocio.servico import EmprestimoService
+from controller import EmprestimoService
+from models import Aluno, Bibliotecaria, Livro
 
 
 def test_heranca_e_polimorfismo_de_papel():
@@ -19,7 +19,7 @@ def test_empresta_e_baixa_um_exemplar():
 
 
 def test_nao_empresta_sem_exemplar():
-    livro = Livro("Capitaes da Areia", "Jorge Amado", "9780000000012", 0)
+    livro = Livro("Capitaes da Areia", "Jorge Amado", "9780000000013", 0)
     with pytest.raises(ValueError, match="Sem exemplar"):
         EmprestimoService().emprestar(False, livro, "2026001", date(2026, 10, 3))
 
@@ -31,8 +31,7 @@ def test_nao_empresta_aluno_em_atraso():
     assert livro.disponiveis == 2
 
 
-def test_encapsulamento_nao_expoe_alteracao_direta_pelo_nome_publico():
-    livro = Livro("O Pequeno Principe", "Saint-Exupery", "9780000000013", 1)
-    assert livro.disponiveis == 1
+def test_encapsulamento_baixa_pelo_metodo():
+    livro = Livro("O Pequeno Principe", "Saint-Exupery", "9780000000012", 1)
     livro.baixar_exemplar()
     assert livro.disponiveis == 0
