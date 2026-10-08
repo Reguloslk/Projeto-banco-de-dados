@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block titulo %}Novo aluno{% endblock %}
+{% block conteudo %}
+<div class="card p-4 mx-auto" style="max-width:520px">
+  <h1 class="h4">Novo aluno</h1>
+  <form method="post">
+    <label class="form-label">Nome</label>
+    <input class="form-control mb-3" name="nome" required>
+    <label class="form-label">Turma</label>
+    <input class="form-control mb-3" name="turma" required>
+    <label class="form-label">Matrícula</label>
+    <input class="form-control mb-3" name="matricula" required>
+    <button class="btn text-white" style="background:#0F6E6B">Salvar</button>
+  </form>
+  {% if mensagem %}
+  <div class="alert alert-danger mt-3">{{ mensagem }}</div>
+  {% endif %}
+</div>
+{% endblock %}

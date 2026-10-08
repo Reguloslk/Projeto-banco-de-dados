@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}BibliotecaFácil{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-dark" style="background:#1F4E79">
+    <div class="container d-flex justify-content-between">
+      <span class="navbar-brand mb-0">BibliotecaFácil</span>
+      {% if session.logado %}
+      <div class="d-flex gap-2">
+        <a class="btn btn-sm btn-light" href="{{ url_for('acervo') }}">Acervo</a>
+        <a class="btn btn-sm text-white" style="background:#0F6E6B" href="{{ url_for('emprestar') }}">Emprestar</a>
+        <a class="btn btn-sm btn-light" href="{{ url_for('devolver') }}">Devolver</a>
+        <a class="btn btn-sm btn-light" href="{{ url_for('atrasos') }}">Atrasos</a>
+        <a class="btn btn-sm btn-outline-light" href="{{ url_for('sair') }}">Sair</a>
+      </div>
+      {% endif %}
+    </div>
+  </nav>
+  <main class="container py-4">
+    {% block conteudo %}{% endblock %}
+  </main>
+</body>
+</html>

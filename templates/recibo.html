@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block titulo %}Recibo{% endblock %}
+{% block conteudo %}
+<div class="card p-4 mx-auto" style="max-width:520px">
+  <h1 class="h4">Recibo</h1>
+  <p>Aluno: {{ aluno }} (matrícula {{ matricula }})</p>
+  <p>Livro: {{ titulo }}</p>
+  <p>Devolver até: {{ prevista }} (7 dias)</p>
+  <a class="btn text-white" style="background:#0F6E6B" href="{{ url_for('acervo') }}">Voltar ao acervo</a>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block titulo %}Novo livro{% endblock %}
+{% block conteudo %}
+<div class="card p-4 mx-auto" style="max-width:520px">
+  <h1 class="h4">Novo livro</h1>
+  <form method="post">
+    <label class="form-label">Título</label>
+    <input class="form-control mb-3" name="titulo" required>
+    <label class="form-label">Autor</label>
+    <input class="form-control mb-3" name="autor" required>
+    <label class="form-label">ISBN</label>
+    <input class="form-control mb-3" name="isbn" required>
+    <label class="form-label">Quantidade</label>
+    <input class="form-control mb-3" name="quantidade" type="number" min="1" value="1" required>
+    <button class="btn text-white" style="background:#0F6E6B">Salvar</button>
+  </form>
+  {% if mensagem %}
+  <div class="alert alert-danger mt-3">{{ mensagem }}</div>
+  {% endif %}
+</div>
+{% endblock %}

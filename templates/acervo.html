@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block titulo %}Acervo{% endblock %}
+{% block conteudo %}
+<div class="d-flex gap-2 mb-3 flex-wrap">
+  <a class="btn btn-light" href="{{ url_for('novo_livro') }}">Novo livro</a>
+  <a class="btn btn-light" href="{{ url_for('novo_aluno') }}">Novo aluno</a>
+</div>
+<div class="card p-4">
+  <h1 class="h4">Acervo</h1>
+  <p class="text-secondary">Achar o livro e ver se há exemplar livre.</p>
+  <table class="table">
+    <tr><th>Título</th><th>Autor</th><th>ISBN</th><th>Disponíveis</th></tr>
+    {% for titulo, autor, isbn, disponiveis in livros %}
+    <tr>
+      <td>{{ titulo }}</td>
+      <td>{{ autor }}</td>
+      <td>{{ isbn }}</td>
+      <td class="{{ 'text-danger' if disponiveis == 0 else 'text-success' }}">{{ disponiveis }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="4">Nenhum livro cadastrado.</td></tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}
