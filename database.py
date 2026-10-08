@@ -23,7 +23,8 @@ def _data(valor):
 
 class Banco:
     def __init__(self, caminho=None):
-        self._caminho = caminho or os.environ.get("DATABASE_PATH", "biblioteca.db")
+        padrao = "/tmp/biblioteca.db" if os.environ.get("RENDER") else "biblioteca.db"
+        self._caminho = caminho or os.environ.get("DATABASE_PATH", padrao)
         self._criar()
         self._popular()
 
